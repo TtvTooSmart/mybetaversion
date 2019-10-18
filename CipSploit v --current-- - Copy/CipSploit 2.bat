@@ -229,7 +229,7 @@ echo Do you want to use your free trial?
 echo.
 echo yes
 echo no
-set /p fpuse=
+set /p "fpuse= "
 if %fpuse%==1 goto usenow
 if %fpuse%==2 goto main
 
