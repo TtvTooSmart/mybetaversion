@@ -1,6 +1,6 @@
 ﻿
 
-@echo off
+::@echo off
 
 @mode con: cols=121 lines=32
 
@@ -37,7 +37,7 @@ set version=4.4
 cls
 setlocal delayexpansion
 cls
-@echo off
+::@echo off
 @mode con: cols=121 lines=32
 cls
 title CipSploit hub©
@@ -232,6 +232,7 @@ echo no
 set /p "fpuse= "
 if %fpuse%==1 goto usenow
 if %fpuse%==2 goto main
+
 
 :usenow
 cls
