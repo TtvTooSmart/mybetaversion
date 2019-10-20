@@ -19,26 +19,39 @@
 
 :agrchk
 cd Downloads\XDevFolder
-if not exist agree.dll
+if exist agree.dll (
+cd..
+cd..
+goto cmd )
+else 
+(
 goto agreement
+)
+
 
 :agreement
 cls
+color 0a
 cd Downloads\XDevFolder
 type main.txt
+cd..
+cd..
 echo.
 echo.
-pause
-set /p agree= "type agree here:- "
-if %agree%==agree
-( goto doc4 ) else ( echo not agreed perfectly goto agreement)
+echo pls type agree to continue
+ping localhost -n 10 >nul
+set /p agr=="type agree here:- "
+if %agr%==agree
+( goto doc4 ) else ( echo not agreed perfectly && goto agreement )
 
 
 :cmd
 cd Downloads\XDevFolder
 if exist color.cmd (
 call color.cmd
-) else ( goto setclr )
+cd..
+cd..
+) else (cd.. && cd.. && goto setclr )
 
 set VipVersion=1.9
 set version=4.8
@@ -359,6 +372,8 @@ if EXIST Adobepremium.dll ( goto main ) else ( goto doc )
 :doc4
 cd Downloads\XDevFolder
 echo %USERNAME% agrred tto cipsploit tos at %time% %date%
+cd..
+cd..
 goto cmd
 
 
