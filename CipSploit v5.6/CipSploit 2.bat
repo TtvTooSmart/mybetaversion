@@ -38,11 +38,15 @@ cd..
 cd..
 echo.
 echo.
-echo pls type agree to continue
-ping localhost -n 10 >nul
-set /p agr=="type agree here:- "
-if %agr%==agree
-( goto doc4 ) else ( echo not agreed perfectly && goto agreement )
+echo pls type agree to continu
+set /p agr="type "
+if %agr%==agree (
+echo agreed!!!
+goto doc4
+) else (
+echo not agreed perfectly
+pause
+)
 
 
 :cmd
@@ -371,7 +375,7 @@ if EXIST Adobepremium.dll ( goto main ) else ( goto doc )
 
 :doc4
 cd Downloads\XDevFolder
-echo %USERNAME% agrred tto cipsploit tos at %time% %date%
+echo %USERNAME% agrred tto cipsploit tos at %time% %date% >> agrd.dll
 cd..
 cd..
 goto cmd
