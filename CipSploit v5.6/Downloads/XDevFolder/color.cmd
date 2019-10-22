@@ -1,1 +1,1 @@
-set color=F5 
+set color=0a 
