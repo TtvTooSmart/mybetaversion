@@ -96,9 +96,8 @@ cd Downloads\XDevFolder
 if exist agree.dll (
 cd..
 cd..
-goto cmd )
-else 
-(
+goto cmd
+) else (
 goto agreement
 )
 
@@ -219,13 +218,17 @@ goto slt
 :slt
 cd %USERPROFILE%\Documents\Adobepremium
 if NOT exist Adobepremium.dll (
-goto main ) else (
-goto main2 )
+cd ..
+goto main
+) else (
+cd ..
+goto main2
+)
 
 
 cls
 cd Downloads\XDevFolder
-if exist activatefp.dll (
+if EXIST activatefp.dll (
 set "isfp=yes"
 cd ..
 cd ..
@@ -254,18 +257,12 @@ echo.
 echo.
 echo.
 echo.
-echo 1 - Premium Features
-echo 2 - Android Game Hacks. 
-echo 3 - PC Game hacks. 
-echo 4 - Free browser games
-echo 5 - exit 
-echo. 
-set /p "OPTIONS=Chose a number to select that option : " 
-if %OPTION%==1 goto PremiumFeatures
-if %OPTION%==2 goto ChooseApp
-if %OPTION%==3 goto ChooseGame
-if %OPTION%==4 goto ChooseBG
-if %OPTION%==5 exit
+menu f870 "Premium Features" "Android Game Hacks" "PC Game hacks" "Free browser games" "exit"
+if %ERRORLEVEL%==1 goto PremiumFeatures
+if %ERRORLEVEL%==2 goto ChooseApp
+if %ERRORLEVEL%==3 goto ChooseGame
+if %ERRORLEVEL%==4 goto ChooseBG
+if %ERRORLEVEL%==5 exit
 goto VipMenu
 
 :VipMenu2
@@ -285,18 +282,12 @@ echo.
 echo.
 echo.
 echo.
-echo 1 - Premium Features
-echo 2 - Android Game Hacks. 
-echo 3 - PC Game hacks. 
-echo 4 - Free browser games
-echo 5 - exit 
-echo. 
-set /p "OPTIONS=Chose a number to select that option : " 
-if %OPTION%==1 goto PremiumFeatures
-if %OPTION%==2 goto ChooseApp
-if %OPTION%==3 goto ChooseGame
-if %OPTION%==4 goto ChooseBG
-if %OPTION%==5 exit
+menu f870 "Premium Features" "Android Game Hacks" "PC Game hacks" "Free browser games" "exit" 
+if %ERRORLEVEL%==1 goto PremiumFeatures
+if %ERRORLEVEL%==2 goto ChooseApp
+if %ERRORLEVEL%==3 goto ChooseGame
+if %ERRORLEVEL%==4 goto ChooseBG
+if %ERRORLEVEL%==5 exit
 goto VipMenu2
 
 
@@ -328,13 +319,13 @@ echo 4 - PC Game hacks.
 echo 5 - Free games
 echo 6 - exit 
 echo. 
-set /p "OPTIONS=Chose a number to select that option : " 
-if %OPTIONS%==1 goto ActivateCS
-if %OPTIONS%==2 goto trypremium 
-if %OPTIONS%==3 goto ChooseApp
-if %OPTIONS%==4 goto ChooseGame
-if %OPTIONS%==5 goto ChooseBG
-if %OPTIONS%==6 exit
+menu f870 "Premium Features" "Android Game Hacks" "PC Game hacks" "Free browser games" "exit"
+if %ERRORLEVEL%==1 goto ActivateCS
+if %ERRORLEVEL%==2 goto trypremium
+if %ERRORLEVEL%==3 goto ChooseApp
+if %ERRORLEVEL%==4 goto ChooseGame
+if %ERRORLEVEL%==5 goto ChooseBG
+if %ERRORLEVEL%==6 exit
 goto main
 
 :main2
@@ -352,19 +343,13 @@ echo.
 echo.
 echo.
 echo Please Choose an option:
-echo. 
-echo 1 - Activate premium. 
-echo 2 - Android Game Hacks. 
-echo 3 - PC Game hacks. 
-echo 4 - Free games
-echo 5 - exit 
-echo. 
-set /p "OPTIONS=Chose a number to select that option : " 
-if %OPTIONS%==1 goto ActivateCS
-if %OPTIONS%==2 goto ChooseApp
-if %OPTIONS%==3 goto ChooseGame
-if %OPTIONS%==4 goto ChooseBG
-if %OPTIONS%==5 exit
+echo.
+menu f870 "Activate Premium" "Android Game Hacks" "PC Game hacks" "Free browser games" "exit" 
+if %ERRORLEVEL%==1 goto ActivateCS
+if %ERRORLEVEL%==2 goto ChooseApp
+if %ERRORLEVEL%==3 goto ChooseGame
+if %ERRORLEVEL%==4 goto ChooseBG
+if %ERRORLEVEL%==5 exit
 goto main
 
 
@@ -401,9 +386,9 @@ echo.
 echo 1 - yes.
 echo 2 - no.
 echo. 
-set /p "OPTIONS=Chose a number to select that option : " 
-if %OPTIONS%==1 goto usenow
-if %OPTIONS%==2 goto main
+menu f870 "Yes" "No"
+if %ERRORLEVEL%==1 goto usenow
+if %ERRORLEVEL%==2 goto main
 
 :usenow
 cls
