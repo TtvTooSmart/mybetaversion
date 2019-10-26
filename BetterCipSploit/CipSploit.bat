@@ -77,39 +77,17 @@ cls
     )
     for /f "tokens=1 delims==" %%v in ('set pb.') do set "%%v="
 
+echo checking internet connection
+Ping www.google.nl -n 1 -w 1000
+cls
+if errorlevel 1 (goto NoConnection) else (goto updatecs)
 
-
-cd Downloads\XDevFolder
-if exist s.dll (
-del s.dll
-goto updatecs1
-)
-else
-(
-goto updatecs1
-)
-
-:updatecs1
-cd Downloads\XDevFolder
-call ping.bat
-cd..
-cd..
-goto updatecs2
-
-:updatecs2
-if exist s.dll 
-( cd..
-cd..
-goto updatecs
-)
-else
-(
-cd..
-cd..
-echo you dont have net connection......
-echo pls buy a net subscription and then try again...........
-ping localhost -n 5>nul
-goto FileStart
+:NoConnection
+cls
+echo Failed to connect to the database!
+echo Please check ur internet connection and try again.
+pause
+exit
 
 :updatecs
 cd Downloads\XDevFolder
@@ -122,9 +100,9 @@ pause >nul
 cd ..
 cd ..
 ) else (
-echo ษออออออออออออออออออออผ
-Echo บ Found a new update บ
-echo ศออออออออออออออออออออผ
+echo รรรรรรรรรรรรรรรรรรรรรยผ
+Echo ยบ Found a new update ยบ
+echo รรรรรรรรรรรรรรรรรรรรรยผ
 :call CipUpdater.bat
 echo calling CipUpdater.bat
 cd..
