@@ -98,7 +98,7 @@ rem )
 
 :cmd
 cd Downloads\XDevFolder
-if exist color.cmd (
+if exist user.config (
 call color.cmd
 cd..
 cd..
