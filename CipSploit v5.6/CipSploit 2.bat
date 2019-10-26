@@ -79,6 +79,7 @@ rem cd Downloads\XDevFolder
 rem IF EXIST "version.txt" del "version.txt"
 rem download "https://pastebin.com/raw/f0rFGadA" "version.txt"
 rem for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
+for /f "delims=" %%x in (user.config) do set Theme=%%x
 rem if %DownloadedVersion%==4.4 (
 rem echo Version up to Date, press a key to continue...
 rem pause >nul
@@ -92,37 +93,7 @@ rem :call CipUpdater.bat
 rem echo calling CipUpdater.bat
 rem pause >nul
 rem )
-goto agrchk
 
-:agrchk
-cd Downloads\XDevFolder
-if exist agree.dll (
-cd..
-cd..
-goto cmd
-) else (
-goto agreement
-)
-
-
-:agreement
-cls
-color 0a
-cd Downloads\XDevFolder
-type main.txt
-cd..
-cd..
-echo.
-echo.
-echo pls type agree to continu
-set /p agr="type "
-if %agr%==agree (
-echo agreed!!!
-goto doc4
-) else (
-echo not agreed perfectly
-pause
-)
 
 
 :cmd
