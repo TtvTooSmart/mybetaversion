@@ -79,7 +79,6 @@ rem cd Downloads\XDevFolder
 rem IF EXIST "version.txt" del "version.txt"
 rem download "https://pastebin.com/raw/f0rFGadA" "version.txt"
 rem for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
-for /f "delims=" %%x in (user.config) do set Theme=%%x
 rem if %DownloadedVersion%==4.4 (
 rem echo Version up to Date, press a key to continue...
 rem pause >nul
@@ -99,13 +98,15 @@ rem )
 :cmd
 cd Downloads\XDevFolder
 if exist user.config (
-call color.cmd
+for /f "delims=" %%x in (user.config) do set Theme=%%x
+
 cd..
 cd..
 ) else (
 cd..
 cd.. 
-goto setclr )
+goto setclr
+)
 
 set VipVersion=1.9
 set version=4.8
@@ -121,7 +122,7 @@ title CipSploit hub©
 :setclr
 cls
 cd Downloads\XDevFolder
-if exist color.cmd ( goto veri ) else ( goto color )
+if exist user.config ( goto veri ) else ( goto color )
 
  
 :color
