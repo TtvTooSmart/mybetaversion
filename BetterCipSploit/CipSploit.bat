@@ -129,65 +129,16 @@ set SolidBlue=90
 set BlackAndBlue=01
 set BlackAndGreen=02
 
+cd Downloads/XDevFolder
+if exist actvsn.dll set viptype=lifetime
+if exist actvsn2.dll set viptype=trial
 
-goto agrchk
-
-:agrchk
-cd Downloads\XDevFolder
-if exist agrd.dll (
-cd..
-cd..
-goto cmd )
-else 
-(
-goto agreement
-)
-
-
-:agreement
-cls
-color 0a
-cd Downloads\XDevFolder
-cls
-type main.txt
-cd..
-cd..
-echo.
-echo.
-echo pls type agree to continue
-set /p agr="type "
-if %agr%==agree (
-echo agreed!!!
-goto doc4
-) else (
-echo not agreed perfectly
-pause >nul
-goto agreement
-)
-
-
-:cmd
-goto veri
-
-
-cls
-cd Downloads\XDevFolder
-if exist data.dll (
-set "isVip=yes"
-cd ..
-cd ..
-goto VipMenu
-) else (
-set "isVip=no"
-cd ..
-cd ..
-goto main
-)
+if %viptype%==lifetime (goto veri) else (goto C1)
 
 :veri
 cls
 cd Downloads\XDevFolder
-if exist data.dll (
+if exist actvsn.dll (
 set "isVip=yes"
 cd ..
 cd ..
@@ -199,10 +150,11 @@ cd ..
 goto main
 )
 
+
+:C1
 cls
 cd Downloads/XDevFolder
-:C1
-if exist actvsn.dll (
+if exist actvsn2.dll (
 for /f "delims=" %%x in (actvsn2.dll) do set ActivatedAt=%%x
 for /f "delims=" %%x in (AC.dll) do set enddayy=%%x
 goto C2
@@ -217,7 +169,7 @@ if %ActivatedAt% LSS %enddayy% ( set "isVip=yes" ) else ( set "isVip=no" )
 cd ..
 cd ..
 if isVip==yes (
-goto VipMenu2
+goto VipMenu
 ) else (
 goto main
 )
@@ -249,36 +201,6 @@ if %ERRORLEVEL% == 2 goto ChooseApp
 if %ERRORLEVEL% == 3 goto ChooseGame2
 if %ERRORLEVEL% == 4 goto ChooseBG
 if %ERRORLEVEL% == 5 exit
-goto VipMenu
-
-:VipMenu2
-cls
-cd Downloads/XDevFolder
-type Logo.txt
-cd..
-cd..
-echo.
-echo.
-echo.
-echo.
-echo Hello %USERNAME%, welcome back to Premium CipSploit V%VipVersion%!
-echo.
-echo.
-echo VIP Member: %isVip%
-echo.
-echo.
-echo.
-echo.
-echo Please Choose an option:
-%run%
-menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
-if %ERRORLEVEL% == 1 goto PremiumFeatures
-if %ERRORLEVEL% == 2 goto ChooseApp
-if %ERRORLEVEL% == 3 goto ChooseGame2
-if %ERRORLEVEL% == 4 goto ChooseBG
-if %ERRORLEVEL% == 5 exit
-goto VipMenu2
-
 pause >nul
 goto VipMenu
 
