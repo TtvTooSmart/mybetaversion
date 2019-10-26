@@ -2,7 +2,7 @@ set VipVersion=1.8
 setlocal delayexpansion
 title CipSploit hub
 cls
-
+:FileStart
 @echo off
 
     setlocal enableextensions disabledelayedexpansion
@@ -281,17 +281,7 @@ if "%1:~0,1%" gtr "9" shift
 for /f "skip=1 tokens=2-4 delims=(-)" %%m in ('echo,^|date') do (set %%m=%1&set %%n=%2&set %%o=%3)
 goto :eof
 
-:doc4
-cd Downloads\XDevFolder
-echo %USERNAME% agre6ed to cipsploit tos at %time% %date% >> agrd.dll
-call log1.bat
-cd..
-cd..
-goto cmd
-
-
 :end_set_date
-cls
 set /a endday = %dd% + 4
 echo.
 echo.
@@ -299,6 +289,31 @@ echo =============================================================
 echo WARNING! THE TRIAL WILL ONLY WORK UNTIL %endday%-%mm%-%yy%
 echo =============================================================
 pause
+echo Are you sure you wish to activate your CipSploit Premium Trial? ( ONE TIME USE ONLY )
+menu f40 "Yes" "No"
+if %ERRORLEVEL% == 1 goto CSPY
+if %ERRORLEVEL% == 2 goto main
+goto CSPTrial
+
+:CSPY
+cls
+echo Getting Database info...
+ping localhost -n 2 >nul
+cls
+echo Getting Version info...
+ping localhost -n 5 >nul
+cd Downloads/XDevFolder
+echo %dd% > actvsn.dll
+echo %endday% > AC.dll
+cd ..
+cd ..
+cls
+echo Verifying Auth...
+ping localhost -n 4 >nul
+echo Succesfully Activated CipSploit Premium Trial
+pause
+goto FileStart
+
 
 
 
