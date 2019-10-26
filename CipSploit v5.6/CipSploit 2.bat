@@ -1,5 +1,6 @@
 ﻿@echo off
-
+echo Easter Egg
+cls
 @mode con: cols=122 lines=32
 @echo off
 
