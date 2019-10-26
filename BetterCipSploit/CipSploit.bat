@@ -1,8 +1,8 @@
 set VipVersion=1.8
 setlocal delayexpansion
-title CipSploit hub©
+title CipSploit hub
 cls
-@mode con: cols=122 lines=32
+
 @echo off
 
     setlocal enableextensions disabledelayedexpansion
@@ -121,6 +121,19 @@ for /f "delims=" %%x in (version.txt) do set ThisVersion=%%x
 cd ..
 cd ..
 
+set RedAndGreen=00
+set Blue=10
+set DarkGreen=20
+set LightBlue=30
+set Red=40
+set Purple=50
+set Yellow=60
+set White=70
+set DarkGrey=80
+set SolidBlue=90
+set BlackAndBlue=01
+set BlackAndGreen=02
+
 
 goto agrchk
 
@@ -153,62 +166,13 @@ echo agreed!!!
 goto doc4
 ) else (
 echo not agreed perfectly
-pause
+pause >nul
+goto agreement
 )
 
 
 :cmd
-
 goto veri
-) else (
-goto color )
-
-
-
-
-
-:color
-cls
-cd Downloads\XDevFolder
-cls
-type logo.txt
-cd..
-cd..
-echo.
-echo [1] for white mode.
-echo [2] for dark mode.
-echo.
-set /p "input=color: "
-if %input%==1 goto white if NOT goto setclr
-if %input%==2 goto dark if NOT goto setclr
-
-
-:white
-color f5
-cd Downloads\XDevFolder
-echo set %cl% = f5 >> color.cmd
-cd..
-cd..
-goto veri
-
-
-:dark
-color 0a
-cd Downloads\XDevFolder
-echo set %cl% = 0a >> color.cmd
-cd..
-cd..
-goto veri
-
-
-
-
-
-
-
-
-
-
 
 
 cls
@@ -281,9 +245,9 @@ goto VipMenu
 cls
 cd Downloads/XDevFolder
 type Logo.txt
-color = %clr%
 cd ..
 cd ..
+color 0a
 echo.
 echo Hello %USERNAME%, welcome back to CipSploit V%DownloadedVersion%!
 echo VIP Member: %isVip%
