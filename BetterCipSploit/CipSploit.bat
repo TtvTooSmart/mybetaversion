@@ -121,12 +121,7 @@ for /f "delims=" %%x in (version.txt) do set ThisVersion=%%x
 cd ..
 cd ..
 
-@echo off
-cls
-cd Downloads\XDevFolder
-call color.cmd
-cd..
-cd..
+
 goto agrchk
 
 :agrchk
@@ -163,15 +158,9 @@ pause
 
 
 :cmd
-cd Downloads\XDevFolder
-if exist color.cmd (
-call color.cmd
-cd..
-cd..
+
 goto veri
 ) else (
-cd..
-cd.. 
 goto color )
 
 
