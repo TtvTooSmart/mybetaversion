@@ -77,6 +77,28 @@ cls
     )
     for /f "tokens=1 delims==" %%v in ('set pb.') do set "%%v="
 
+
+
+rem cd Downloads\XDevFolder
+rem if exist s.dll ( del s.dll ) else ( goto updatecs1 )
+rem :updatecs1
+rem cd Downloads\XDevFolder
+rem call ping.bat
+rem if exist s.dll 
+rem ( cd..
+rem cd..
+rem goto updatecs
+rem )
+rem else
+rem (
+rem cd..
+rem cd..
+rem echo you dot have net connection...... ;-;
+rem echo pls buy a net subscription and then try again...........
+rem pause >nul
+rem exit
+
+rem :updatecs
 rem cd Downloads\XDevFolder
 rem IF EXIST "version.txt" del "version.txt"
 rem download "https://pastebin.com/raw/f0rFGadA" "version.txt"
@@ -87,9 +109,9 @@ rem pause >nul
 rem cd ..
 rem cd ..
 rem ) else (
-echo ษออออออออออออออออออออผ
-Echo บ Found a new update บ
-echo ศออออออออออออออออออออผ
+rem echo ษออออออออออออออออออออผ
+rem Echo บ Found a new update บ
+rem echo ศออออออออออออออออออออผ
 rem :call CipUpdater.bat
 rem echo calling CipUpdater.bat
 rem pause >nul
@@ -102,7 +124,7 @@ cd ..
 @echo off
 cls
 cd Downloads\XDevFolder
-call config.cmd
+call color.cmd
 cd..
 cd..
 goto agrchk
@@ -348,15 +370,17 @@ goto VIPmenu
 )
 
 
+:check
+if %isVip%==yes ( goto Vipmenu ) else ( goto main )
+
 :ChooseBG
 cls
 echo Please choose an app:
 echo.
 echo.
-menu f870 "CoolMath Games" "Unassigned" "Back"
+menu f870 "CoolMath Games" "Back"
 if %ERRORLEVEL% == 1 goto CMGHack
-if %ERRORLEVEL% == 2 goto ChooseBG
-if %ERRORLEVEL% == 3 goto main
+if %ERRORLEVEL% == 2 goto check
 
 :CMGHack
 cls
@@ -374,7 +398,7 @@ echo.
 menu f870 "Archerio (Android)" "Unassigned" "Back"
 if %ERRORLEVEL% == 1 goto Archerio
 if %ERRORLEVEL% == 2 goto ChooseApp
-if %ERRORLEVEL% == 3 goto main
+if %ERRORLEVEL% == 3 goto check
 
 :Archerio
 cls
@@ -382,7 +406,7 @@ echo Oppening browser...
 start https://gofile.io/?c=slT6Yn
 echo Done!
 ping localhost -n 3 >nul
-goto main
+goto check
 
 
 :ChooseGame
@@ -390,19 +414,19 @@ cls
 echo Please choose a game:
 echo.
 echo.
-menu f870 "Roblox" "Minecraft" "Back"
+menu f870 "Roblox" "Minecraft" "back"
 echo A
 if %ERRORLEVEL% == 1 goto Roblox
 if %ERRORLEVEL% == 2 goto Minecraft
-if %ERRORLEVEL% == 3 goto main
+if %ERRORLEVEL% == - goto check
 
 :Roblox
 cls
-menu f870 "Topkek Script" "Trigon Executor" "XPloit Executor made by Cip 2.0" "Page 2"
+menu f870 "Topkek Script" "Trigon Executor" "XPloit Executor made by Cip 2.0" "back"
 if %ERRORLEVEL% == 1 goto Topkek
 if %ERRORLEVEL% == 2 goto TrigonExec
 if %ERRORLEVEL% == 3 goto RBXPloit
-if %ERRORLEVEL% == 4 goto RBPage2
+if %ERRORLEVEL% == 4 goto check
 
 :Topkek
 cls
@@ -414,7 +438,9 @@ echo.
 echo.
 echo Press enter to continue
 pause >nul
-goto main
+goto check
+
+
 
 :Trigon
 cls
@@ -422,7 +448,7 @@ echo Oppening browser...
 start https://mega.nz/#F!o1lB3DaB!9zoxRYNYqOYVQghjn8b9nw
 echo Done!
 ping localhost -n 3 >nul
-goto main
+goto check
 
 :RBXPloit
 cls
@@ -435,17 +461,59 @@ goto main
 ) else (
 echo This is a premium only feature! 
 ping localhost -n 3 >nul
-goto main
+goto check
 )
 
-:RBPage2
-cls
-echo Work in progress, please update in 5 minutes...
-pause >nul
+:back
 goto main
 
 :Minecraft
 cls
-echo Work in progress, please update in 5 minutes...
-pause >nul
-goto main
+menu f870 "gorilla" "harambe" "7clicker" "kyprak" ".jar package of 5+ hacks" "back"
+if %ERRORLEVEL% == 1 goto gorilla
+if %ERRORLEVEL% == 2 goto harambe
+if %ERRORLEVEL% == 3 goto 7clicker
+if %ERRORLEVEL% == 4 goto kyprak
+if %ERRORLEVEL% == 5 goto zip
+if %ERRORLEVEL% == 6 goto
+
+
+:gorilla
+cls
+echo Downloading gorilla...
+start https://mega.nz/#!wyIEkb4Y!6e2J1Zx92JaI5rclSaepnF3xkMg3Sk9gbz-aoMPTrrw
+echo Done!
+ping localhost -n 3 >nul
+goto check
+
+:harambe
+cls
+echo Downloading harambe...
+start https://mega.nz/#!lmZHjQQa!UM36pIMixBicq8_GsK_FXFc1KtCKXVSqPrwm9P8XmF4
+echo Done!
+ping localhost -n 3 >nul
+goto check
+
+:7clicker
+cls
+echo Downloading ...
+start https://mega.nz/#!8u5zCDgL!ei0-vIYOZe6RZIotG4K4J1lTVlVI5G0KbLM9nZml_O4
+echo Done!
+ping localhost -n 3 >nul
+goto check
+
+:kyprak
+cls
+echo Downloading ...
+start https://mega.nz/#!Em4XWKaL!l8HOQwPpK8tP-oI0F1ruiwHGvjaCt6SyzqkpFH6Mxlo
+echo Done!
+ping localhost -n 3 >nul
+goto check
+
+:zip
+cls
+echo Downloading ...
+start https://github.com/juicylynx/minecrafthackszip
+echo done!
+ping localhost -n 3 >nul
+goto check
