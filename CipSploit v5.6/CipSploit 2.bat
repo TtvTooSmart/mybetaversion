@@ -85,6 +85,9 @@ rem pause >nul
 rem cd ..
 rem cd ..
 rem ) else (
+echo ÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
+Echo º Found a new update º
+echo ÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 rem :call CipUpdater.bat
 rem echo calling CipUpdater.bat
 rem pause >nul
@@ -128,7 +131,10 @@ if exist color.cmd (
 call color.cmd
 cd..
 cd..
-) else (cd.. && cd.. && goto setclr )
+) else (
+cd..
+cd.. 
+goto setclr )
 
 set VipVersion=1.9
 set version=4.8
@@ -139,6 +145,8 @@ cls
 @mode con: cols=121 lines=32
 cls
 title CipSploit hub©
+
+
 :setclr
 cls
 cd Downloads\XDevFolder
@@ -152,6 +160,7 @@ cd Downloads\XDevFolder
 type logo.txt
 cd..
 cd..
+echo.
 echo [1] for white mode.
 echo [2] for dark mode.
 echo.
@@ -159,17 +168,18 @@ set/p input= "color:"
 if %input%==1 goto white if NOT goto setclr
 if %input%==2 goto dark if NOT goto setclr
 :white
-color F5
+color f5
 cd Downloads\XDevFolder
-echo set color=F5 >> color.cmd
+echo color=0a >> color.cmd
 cd..
 cd..
 goto veri
 
+
 :dark
 color 0a
 cd Downloads\XDevFolder
-echo set color=0a >> color.cmd
+echo color=0a >> color.cmd
 cd..
 cd..
 goto veri
