@@ -99,7 +99,7 @@ rem )
 cd Downloads\XDevFolder
 if exist user.config (
 for /f "delims=" %%x in (user.config) do set Theme=%%x
-
+color %Theme%
 cd..
 cd..
 ) else (
@@ -137,12 +137,13 @@ echo [1] for white mode.
 echo [2] for dark mode.
 echo.
 set/p input= "color:"
-if %input%==1 goto white if NOT goto setclr
-if %input%==2 goto dark if NOT goto setclr
+if %input%==1 (goto white) else (goto setclr)
+if %input%==2 (goto dark) else (goto setclr)
+
 :white
 color f5
 cd Downloads\XDevFolder
-echo color=0a >> color.cmd
+echo f5 > user.config
 cd..
 cd..
 goto veri
@@ -151,7 +152,7 @@ goto veri
 :dark
 color 0a
 cd Downloads\XDevFolder
-echo color=0a >> color.cmd
+echo 0a > user.config
 cd..
 cd..
 goto veri
@@ -182,6 +183,7 @@ cd ..
 cd ..
 goto slt
 )
+
 :veri
 cls
 cd Downloads\XDevFolder
