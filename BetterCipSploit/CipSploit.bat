@@ -79,43 +79,53 @@ cls
 
 
 
-rem cd Downloads\XDevFolder
-rem if exist s.dll ( del s.dll ) else ( goto updatecs1 )
-rem :updatecs1
-rem cd Downloads\XDevFolder
-rem call ping.bat
-rem if exist s.dll 
-rem ( cd..
-rem cd..
-rem goto updatecs
-rem )
-rem else
-rem (
-rem cd..
-rem cd..
-rem echo you dot have net connection...... ;-;
-rem echo pls buy a net subscription and then try again...........
-rem pause >nul
-rem exit
+cd Downloads\XDevFolder
+if exist s.dll ( del s.dll ) else ( goto updatecs1 )
 
-rem :updatecs
-rem cd Downloads\XDevFolder
-rem IF EXIST "version.txt" del "version.txt"
-rem download "https://pastebin.com/raw/f0rFGadA" "version.txt"
-rem for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
-rem if %DownloadedVersion%==4.4 (
-rem echo Version up to Date, press a key to continue...
-rem pause >nul
-rem cd ..
-rem cd ..
-rem ) else (
-rem echo ษออออออออออออออออออออผ
-rem Echo บ Found a new update บ
-rem echo ศออออออออออออออออออออผ
-rem :call CipUpdater.bat
-rem echo calling CipUpdater.bat
-rem pause >nul
-rem )
+:updatecs1
+cd Downloads\XDevFolder
+call ping.bat
+cd..
+cd..
+goto updatecs2
+
+:updatecs2
+if exist s.dll 
+( cd..
+cd..
+goto updatecs
+)
+else
+(
+cd..
+cd..
+echo you dot have net connection......
+echo pls buy a net subscription and then try again...........
+pause >nul
+exit
+
+:updatecs
+cd Downloads\XDevFolder
+IF EXIST "version.txt" del "version.txt"
+download "https://pastebin.com/raw/f0rFGadA" "version.txt"
+for /f "delims=" %%x in (version.txt) do set DownloadedVersion=%%x
+if %DownloadedVersion%==4.4 (
+echo Version up to Date, press a key to continue...
+pause >nul
+cd ..
+cd ..
+) else (
+echo ษออออออออออออออออออออผ
+Echo บ Found a new update บ
+echo ศออออออออออออออออออออผ
+:call CipUpdater.bat
+echo calling CipUpdater.bat
+cd..
+cd..
+pause >nul
+)
+
+
 cd Downloads/XDevFolder
 for /f "delims=" %%x in (version.txt) do set ThisVersion=%%x
 cd ..
@@ -204,6 +214,30 @@ cd ..
 goto main
 )
 
+cls
+cd Downloads/XDevFolder
+:C1
+if exist actvsn.dll (
+for /f "delims=" %%x in (actvsn2.dll) do set ActivatedAt=%%x
+for /f "delims=" %%x in (AC.dll) do set enddayy=%%x
+goto C2
+) else ( 
+cd ..
+cd ..
+goto main
+)
+
+:C2
+if %ActivatedAt% LSS %enddayy% ( set "isVip=yes" ) else ( set "isVip=no" )
+cd ..
+cd ..
+if isVip==yes (
+goto VipMenu2
+) else (
+goto main
+)
+
+
 :VipMenu
 cls
 cd Downloads/XDevFolder
@@ -226,11 +260,39 @@ echo Please Choose an option:
 %run%
 menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
 if %ERRORLEVEL% == 1 goto PremiumFeatures
-if %ERRORLEVEL% == 2 goto VIPChooseApp
-if %ERRORLEVEL% == 3 goto VIPChooseGame
-if %ERRORLEVEL% == 4 goto VIPChooseBG
+if %ERRORLEVEL% == 2 goto ChooseApp
+if %ERRORLEVEL% == 3 goto ChooseGame2
+if %ERRORLEVEL% == 4 goto ChooseBG
 if %ERRORLEVEL% == 5 exit
 goto VipMenu
+
+:VipMenu2
+cls
+cd Downloads/XDevFolder
+type Logo.txt
+cd..
+cd..
+echo.
+echo.
+echo.
+echo.
+echo Hello %USERNAME%, welcome back to Premium CipSploit V%VipVersion%!
+echo.
+echo.
+echo VIP Member: %isVip%
+echo.
+echo.
+echo.
+echo.
+echo Please Choose an option:
+%run%
+menu f40 "Premium Features" "Application/Program" "Game" "Browser Games" "Exit"
+if %ERRORLEVEL% == 1 goto PremiumFeatures
+if %ERRORLEVEL% == 2 goto ChooseApp
+if %ERRORLEVEL% == 3 goto ChooseGame2
+if %ERRORLEVEL% == 4 goto ChooseBG
+if %ERRORLEVEL% == 5 exit
+goto VipMenu2
 
 pause >nul
 goto VipMenu
@@ -303,7 +365,7 @@ cls
 echo Getting Version info...
 ping localhost -n 5 >nul
 cd Downloads/XDevFolder
-echo %dd% > actvsn.dll
+echo %dd% > actvsn2.dll
 echo %endday% > AC.dll
 cd ..
 cd ..
@@ -377,6 +439,18 @@ ping localhost -n 3 >nul
 goto check
 
 
+:ChooseGame2
+cls
+echo Please choose a game:
+echo.
+echo.
+menu f870 "Roblox" "Minecraft" "back"
+echo A
+if %ERRORLEVEL% == 1 goto Roblox
+if %ERRORLEVEL% == 2 goto Minecraft2
+if %ERRORLEVEL% == - goto check
+
+
 :ChooseGame
 cls
 echo Please choose a game:
@@ -435,7 +509,7 @@ goto check
 :back
 goto main
 
-:Minecraft
+:Minecraft2
 cls
 menu f870 "gorilla" "harambe" "7clicker" "kyprak" ".jar package of 5+ hacks" "back"
 if %ERRORLEVEL% == 1 goto gorilla
@@ -444,6 +518,16 @@ if %ERRORLEVEL% == 3 goto 7clicker
 if %ERRORLEVEL% == 4 goto kyprak
 if %ERRORLEVEL% == 5 goto zip
 if %ERRORLEVEL% == 6 goto
+
+
+:Minecraft
+cls
+menu f870 "gorilla" "harambe" "7clicker" "kyprak" "back"
+if %ERRORLEVEL% == 1 goto gorilla
+if %ERRORLEVEL% == 2 goto harambe
+if %ERRORLEVEL% == 3 goto 7clicker
+if %ERRORLEVEL% == 4 goto kyprak
+if %ERRORLEVEL% == 5 goto
 
 
 :gorilla
