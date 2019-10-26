@@ -80,7 +80,14 @@ cls
 
 
 cd Downloads\XDevFolder
-if exist s.dll ( del s.dll ) else ( goto updatecs1 )
+if exist s.dll (
+del s.dll
+goto updatecs1
+)
+else
+(
+goto updatecs1
+)
 
 :updatecs1
 cd Downloads\XDevFolder
@@ -99,10 +106,10 @@ else
 (
 cd..
 cd..
-echo you dot have net connection......
+echo you dont have net connection......
 echo pls buy a net subscription and then try again...........
-pause >nul
-exit
+ping localhost -n 5>nul
+goto FileStart
 
 :updatecs
 cd Downloads\XDevFolder
